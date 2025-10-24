@@ -30,4 +30,4 @@ jobs:
           echo "SHOPIFY_ACCESS_TOKEN=${{ secrets.SHOPIFY_ACCESS_TOKEN }}" >> $GITHUB_ENV
 
       - name: 🚀 Deploy theme to Shopify
-        run: shopify theme push --store $SHOPIFY_STORE_URL --access-token $SHOPIFY_ACCESS_TOKEN --allow-live --json
+        run: shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_ACCESS_TOKEN --allow-live --json
