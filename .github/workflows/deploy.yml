@@ -32,4 +32,4 @@ jobs:
 
       - name: 🚀 Deploy theme to Shopify
         run: |
-          shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_ACCESS_TOKEN --theme-id 165509726244 --allow-live --json
+          shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_ACCESS_TOKEN --theme 165509726244 --allow-live --json
