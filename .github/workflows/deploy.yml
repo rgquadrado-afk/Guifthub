@@ -3,24 +3,22 @@ name: 🚀 Deploy Casas Dona Benta Theme
 on:
   push:
     branches:
-      - main  # troque para 'master' se seu branch principal tiver esse nome
-  workflow_dispatch:
+      - main  # Executa o deploy sempre que houver push na branch main
 
 jobs:
   deploy:
-    name: Deploy to Shopify Theme
     runs-on: ubuntu-latest
 
     steps:
       - name: 🧩 Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: ⚙️ Set up Node.js
-        uses: actions/setup-node@v4
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 🧰 Install Shopify CLI
+      - name: 🛠️ Install Shopify CLI
         run: |
           npm install -g @shopify/cli @shopify/theme
 
@@ -31,7 +29,5 @@ jobs:
           echo "SHOPIFY_STORE_URL=${{ secrets.SHOPIFY_STORE_URL }}" >> $GITHUB_ENV
           echo "SHOPIFY_ACCESS_TOKEN=${{ secrets.SHOPIFY_ACCESS_TOKEN }}" >> $GITHUB_ENV
 
-        - name: 🚀 Deploy theme to Shopify
-        run: |
-          shopify theme push --store $SHOPIFY_STORE_URL --access-token $SHOPIFY_ACCESS_TOKEN --allow-live --json
-
+      - name: 🚀 Deploy theme to Shopify
+        run: shopify theme push --store $SHOPIFY_STORE_URL --access-token $SHOPIFY_ACCESS_TOKEN --allow-live --json
